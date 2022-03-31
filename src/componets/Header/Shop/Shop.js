@@ -3,19 +3,12 @@ import Cart from '../../Cart/Cart';
 import Product from '../../Product/Product';
 import './Shop.css';
 import { addToDb, getStoredCart } from '../../../utilities/fakedb';
+import UseProducts from '../../../Hooks/UseProducts/UseProducts';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = UseProducts();
     const [cart, setCart] = useState([]);
-    useEffect(() => {
-        console.log('product load before fetech');
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => {
-                setProducts(data)
-                console.log('products loaded finished');
-            })
-    }, []);
+
     useEffect(() => {
         console.log('local storage first line');
         const storedCart = getStoredCart();
