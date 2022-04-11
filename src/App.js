@@ -6,6 +6,7 @@ import Shop from './componets/Header/Shop/Shop';
 import Inventory from './componets/Inventory/Inventory';
 import Login from './componets/Login/Login';
 import Orders from './componets/Orders/Orders';
+import Signup from './componets/Signup/Signup';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Route path='/orders' element={<Orders />} />
         <Route path='/inventory' element={<Inventory />} />
         <Route path='/about' element={<About />} />
-        <Route path='/login' element={<Login/>} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup/>}/>
       </Routes>
     </div>
   );
