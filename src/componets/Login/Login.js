@@ -1,6 +1,7 @@
+import { faRandom } from '@fortawesome/free-solid-svg-icons';
 import React, { useState } from 'react';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../firebase/firebase.init';
 import './Login.css';
 
@@ -11,7 +12,11 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const handleEmailBlur = e => {
@@ -27,7 +32,7 @@ const Login = () => {
         signInWithEmailAndPassword(email, password)
     }
     if (user) {
-        navigate('/shop')
+        navigate(from, { replace: true })
     }
     return (
         <div className='form-container'>
